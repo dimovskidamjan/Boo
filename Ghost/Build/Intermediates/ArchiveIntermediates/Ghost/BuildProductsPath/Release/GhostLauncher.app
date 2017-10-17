@@ -1,1 +1,0 @@
-/Users/damjandimovski/Documents/3PDevelopment/Project/Ghost/Build/Intermediates/ArchiveIntermediates/Ghost/IntermediateBuildFilesPath/UninstalledProducts/macosx/GhostLauncher.app
