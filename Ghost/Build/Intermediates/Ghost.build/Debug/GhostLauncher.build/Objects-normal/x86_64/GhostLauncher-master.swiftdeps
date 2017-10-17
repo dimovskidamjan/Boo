@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.65 clang-900.0.37)"
+options: "4b95d63ee53d3c6a134c4aae09fc5d0a"
+build_time: [1507936633, 498844000]
+inputs:
+  "/Users/damjandimovski/Documents/3PDevelopment/Project/Ghost/GhostLauncher/AppDelegate.swift": [1507936633, 0]

@@ -1,0 +1,1 @@
+/Users/damjandimovski/Documents/3PDevelopment/Project/Ghost/Build/Intermediates/ArchiveIntermediates/GhostHelper/IntermediateBuildFilesPath/UninstalledProducts/macosx/GhostHelper.app

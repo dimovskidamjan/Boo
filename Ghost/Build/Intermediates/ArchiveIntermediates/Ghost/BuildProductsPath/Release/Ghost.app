@@ -1,0 +1,1 @@
+/Users/damjandimovski/Documents/3PDevelopment/Project/Ghost/Build/Intermediates/ArchiveIntermediates/Ghost/InstallationBuildProductsLocation/Applications/Ghost.app
