@@ -10,7 +10,7 @@ If you're tired of typing the same command in Terminal over and over again just 
 
 ## Installation
 
-If you want to install Boo, [download it](https://github.com/dimovskidamjan/Boo/blob/master/Boo.dmg?raw=true), mount it, and follow the instructions.
+If you want to install Boo, [download it](http://bit.ly/2yokbkv), mount it, and follow the instructions.
 
 ## Contributions
 Originally, this was supposed to be my first macOS app on the App Store, under the working title Ghost. But, as many of you will no doubt know, macOS apps are requested to run in a Sandbox, and are not allowed to edit user preferences or give commands to other apps or processes. Long story short, I was rejected within 30 minutes of submission, and decided to open source my app.
