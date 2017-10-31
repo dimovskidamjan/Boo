@@ -53,14 +53,62 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func constructMenu() {
     let menu = NSMenu()
     
-    menu.addItem(NSMenuItem(title: isShowingHiddenFiles ? "Hide" : "Show", action: #selector(AppDelegate.toggleHideFiles(_:)), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: isShowingHiddenFiles ? "Hide hidden files" : "Show hidden files", action: #selector(AppDelegate.toggleHideFiles(_:)), keyEquivalent: ""))
+    menu.addItem(NSMenuItem.separator())
+    menu.addItem(NSMenuItem(title: "Unhide file...", action: #selector(AppDelegate.showFile(_:)), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "Hide file...", action: #selector(AppDelegate.hideFile(_:)), keyEquivalent: ""))
+    menu.addItem(NSMenuItem.separator())
     let launchItem = NSMenuItem(title: "Launch on start", action: #selector(AppDelegate.toggleLaunchOnStart(_:)), keyEquivalent: "")
     launchItem.state = UserDefaults.standard.bool(forKey: "loginItemEnabled") ? .on : .off
     menu.addItem(launchItem)
     menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(title: "Quit Ghost", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
+    menu.addItem(NSMenuItem(title: "Quit Boo", action: #selector(NSApplication.terminate(_:)), keyEquivalent: ""))
     
     statusItem.menu = menu
+  }
+  
+  @objc func showFile(_ sender: NSMenuItem) {
+    let dialog = NSOpenPanel()
+    dialog.title                   = "Choose a file to show"
+    dialog.showsResizeIndicator    = true
+    dialog.showsHiddenFiles        = true
+    dialog.canChooseDirectories    = true
+    dialog.canCreateDirectories    = true
+    dialog.allowsMultipleSelection = false
+    dialog.prompt                  = "Select"
+    
+    if (dialog.runModal() == .OK) {
+      if let result = dialog.url {
+        let path = result.path
+        let task = Process()
+        task.launchPath = "/usr/bin/chflags"
+        task.arguments = ["nohidden", path]
+        task.launch()
+        task.waitUntilExit()
+      }
+    }
+  }
+  
+  @objc func hideFile(_ sender: NSMenuItem) {
+    let dialog = NSOpenPanel()
+    dialog.title                   = "Choose a file to hide"
+    dialog.showsResizeIndicator    = true
+    dialog.showsHiddenFiles        = false
+    dialog.canChooseDirectories    = true
+    dialog.canCreateDirectories    = true
+    dialog.allowsMultipleSelection = false
+    dialog.prompt                  = "Select"
+    
+    if (dialog.runModal() == .OK) {
+      if let result = dialog.url {
+        let path = result.path
+        let task = Process()
+        task.launchPath = "/usr/bin/chflags"
+        task.arguments = ["hidden", path]
+        task.launch()
+        task.waitUntilExit()
+      }
+    }
   }
   
   @objc func toggleHideFiles(_ sender: NSMenuItem) {
